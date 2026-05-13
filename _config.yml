@@ -1,0 +1,55 @@
+# Jekyll Configuration
+minimal_mistakes_skin: "dark"
+remote_theme: "mmistakes/minimal-mistakes@4.28.0"
+plugins:
+  - jekyll-include-cache
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+# This tells Jekyll NOT to put blog posts on the homepage
+paginate: nil
+
+defaults:
+  - scope:
+      path: "_posts"
+      type: posts
+    values:
+      layout: fullwidth
+
+title: Izabella Molnar · SDET
+email: m.izabella21@gmail.com
+description: "Quality Assurance Engineer specializing in test automation, full-stack quality practices, and CI/CD integration."
+
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://izabella-21.github.io" # Your GitHub Pages URL
+# Social sharing
+social:
+  type: Person
+  links:
+    - https://github.com/Izabella-21
+    - https://linkedin.com/in/izabella-molnar
+
+# # Custom page width
+# minimal_mistakes_sidebar:
+#   - url: /
+#     title: "Custom Width"
+
+# Exclude from processing.
+# The following items will not be processed, by default.
+# Any item listed under the `exclude:` key here will be automatically added to
+# the internal "default list".
+#
+# Excluded items can be processed by explicitly listing the directories or
+# their entries' file path in the `include:` list.
+#
+# exclude:
+#   - .sass-cache/
+#   - .jekyll-cache/
+#   - gemfiles/
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules/
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/

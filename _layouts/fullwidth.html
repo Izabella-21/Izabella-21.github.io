@@ -1,0 +1,541 @@
+---
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+  <!-- Favicon - simple PNG version -->
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favi.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favi.png">
+<link rel="apple-touch-icon" href="/assets/images/favi.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  
+  <!-- Open Graph Meta Tags for Social Sharing -->
+  <meta property="og:title" content="{{ page.title | default: site.title }}">
+  <meta property="og:description" content="{{ page.description | default: site.description }}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{ page.url | absolute_url }}">
+  <meta property="og:site_name" content="{{ site.title }}">
+  <meta property="og:image" content="{{ '/assets/images/meta-image.jpg' | absolute_url }}">
+  
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ page.title | default: site.title }}">
+  <meta name="twitter:description" content="{{ page.description | default: site.description }}">
+  <meta name="twitter:image" content="{{ '/assets/images/meta-image.jpg' | absolute_url }}">
+  
+  <title>{{ page.title | default: site.title }} | {{ site.title }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  <style>
+        /* Satoshi Font Definitions */
+    @font-face {
+        font-family: 'Satoshi';
+        src: url('/assets/fonts/Satoshi-Regular.otf') format('opentype');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Satoshi';
+        src: url('/assets/fonts/Satoshi-Bold.otf') format('opentype');
+        font-weight: bold;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: 'Satoshi';
+        src: url('/assets/fonts/Satoshi-Medium.otf') format('opentype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+    }
+
+    * {
+        font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    
+    body {
+      margin: 0;
+      padding: 0;
+      animation: pageLoad 0.4s ease;
+    }
+
+    @keyframes pageLoad {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    :root {
+      --text-primary: #deebd8;
+      --text-secondary: #e1f5df;
+      --text-muted: #8c9784;
+      --accent-color: #8659f7;
+      --link-color: #ffffff;
+      --link-hover: #5c34c2;
+      --heading-color: #c0dfb7;
+    }
+    
+    /* Dark mode colors */
+    [data-theme="dark"] {
+      --text-primary: #e8e8e8;
+      --text-secondary: #b0b0b0;
+      --text-muted: #8a8a8a;
+      --accent-color: #66ff58;
+      --link-color: #b5e7b5;
+      --link-hover: #8fff79;
+      --heading-color: #ffffff;
+    }
+    
+    /* Apply colors */
+    body {
+      color: var(--text-primary);
+    }
+    
+    .page-content {
+      color: var(--text-primary);
+    }
+    
+    .page-content h1,
+    .page-content h2,
+    .page-content h3,
+    .page-content h4 {
+      color: var(--heading-color);
+    }
+    
+    .page-content a {
+      color: var(--link-color);
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    
+    .page-content a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+    
+    .page-content p {
+      color: var(--text-primary);
+    }
+
+/* Mobile menu styles */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+/* Current page highlight */
+.nav-link.active {
+  color: var(--accent-color);
+  font-weight: 600;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 4px;
+}
+
+/* Mobile view (screens smaller than 768px) */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+  
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+  }
+  
+  .nav-links.show {
+    display: flex;
+  }
+  
+  .nav-link {
+    padding: 8px 0;
+  }
+}
+    
+    .page-title {
+      color: var(--heading-color);
+      border-bottom-color: var(--accent-color);
+    }
+    .fullwidth-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    /* Projects Grid Styling */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1.75rem;
+  margin: 2rem 0;
+}
+
+.project-card {
+  background: var(--background-color);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 20px;
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+[data-theme="dark"] .project-card {
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+  border-color: rgba(134, 89, 247, 0.3);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.project-icon {
+  font-size: 2rem;
+}
+
+.project-status {
+  font-size: 0.7rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  background: rgba(134, 89, 247, 0.1);
+  color: #8659f7;
+  font-weight: 500;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.project-description {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+.tech-tag {
+  background: rgba(0,0,0,0.05);
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-family: monospace;
+  transition: all 0.2s ease;
+}
+
+[data-theme="dark"] .tech-tag {
+  background: rgba(255,255,255,0.08);
+}
+
+.tech-tag:hover {
+  background: rgba(134, 89, 247, 0.15);
+  transform: translateY(-2px);
+}
+
+.project-links {
+  margin-top: 1rem;
+}
+
+.project-link {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #8659f7;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.project-link:hover {
+  transform: translateX(4px);
+  display: inline-block;
+  opacity: 0.7;
+}
+
+.recent-posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.recent-post-card {
+  padding: 1rem;
+  border: 1px solid rgba(0,0,0,0.06);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.recent-post-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(134, 89, 247, 0.2);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+}
+
+.recent-post-meta {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.7rem;
+}
+
+.recent-post-date {
+  opacity: 0.6;
+}
+
+.recent-post-category {
+  color: #8659f7;
+  font-weight: 500;
+}
+
+.recent-post-title {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+}
+
+.recent-post-title a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+.recent-post-title a:hover {
+  color: #8659f7;
+}
+
+.recent-post-excerpt {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  line-height: 1.4;
+}
+    /* Navigation */
+    .site-nav {
+      margin-bottom: 2rem;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      padding-bottom: 1rem;
+    }
+    
+    [data-theme="dark"] .site-nav {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    
+    .nav-link {
+      margin-right: 1.5rem;
+      text-decoration: none;
+      color: var(--text-color, #333);
+    }
+    
+    .nav-link:hover {
+      color: var(--accent-color, #0366d6);
+    }
+    
+    /* Page title */
+    .page-title {
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 2rem;
+      border-bottom: 2px solid var(--accent-color, #0366d6);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+    
+    /* Content styling */
+    .page-content {
+      line-height: 1.6;
+    }
+    
+    .page-content h2 {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .fullwidth-container {
+        padding: 1rem;
+      }
+      .nav-link {
+        margin-right: 1rem;
+      }
+    }
+    /* Add to your CSS */
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #8659f7, #66ff58, #8659f7);
+  background-size: 200%;
+  animation: loading 1s infinite;
+  z-index: 10000;
+}
+
+@keyframes loading {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+  </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <!-- Social sharing meta tags -->
+  <meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+  <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html }}{% else %}{{ site.description }}{% endif %}">
+  <meta property="og:image" content="{{ site.url }}/assets/images/meta-image.jpg">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta name="twitter:card" content="summary_large_image">
+  
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4F351D33K5"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4F351D33K5');
+</script>
+</head>
+<body>
+  <div class="fullwidth-container">
+<nav class="site-nav">
+  <!-- Top row: menu button on right (no IM) -->
+  <div style="display: flex; justify-content: flex-end; align-items: center;">
+    <button class="menu-toggle" aria-label="Menu" style="background: none; border: none; color: var(--text-primary); font-size: 1.8rem; cursor: pointer;">☰</button>
+  </div>
+  
+  <!-- Navigation links -->
+  <div class="nav-links" style="margin-top: 1rem;">
+    <a href="/" class="nav-link" data-page="home">Home</a>
+    <a href="/resume" class="nav-link" data-page="resume">Resume</a>
+    <a href="/portfolio" class="nav-link" data-page="portfolio">Portfolio</a>
+    <a href="/blog" class="nav-link" data-page="blog">Blog</a>
+  </div>
+</nav>
+    {% if page.title %}
+      <h1 class="page-title">{{ page.title }}</h1>
+    {% endif %}
+    
+    <div class="page-content">
+      {{ content }}
+    </div>
+  </div>
+<script>
+  // Loading animation for internal navigation
+  document.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function(e) {
+      // Only show loader for internal links (same website)
+      if (this.hostname === window.location.hostname || this.getAttribute('href')?.startsWith('/')) {
+        // Skip if it's just an anchor link (#something)
+        if (this.getAttribute('href') === '#') return;
+        if (this.getAttribute('href')?.startsWith('#')) return;
+        
+        const loader = document.createElement('div');
+        loader.className = 'loading';
+        document.body.appendChild(loader);
+      }
+    });
+  });
+</script>
+
+<!-- Back to Top Button -->
+<button id="back-to-top" style="position: fixed; bottom: 30px; right: 30px; display: none; background: linear-gradient(135deg, #8659f7, #a855f7); color: white; border: none; border-radius: 40px; padding: 12px 24px; cursor: pointer; font-size: 0.95rem; font-weight: 500; z-index: 9999; box-shadow: 0 4px 15px rgba(134, 89, 247, 0.4); transition: all 0.3s ease; backdrop-filter: blur(4px);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 8px 25px rgba(134, 89, 247, 0.6)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(134, 89, 247, 0.4)';">↑ Back to Top</button>
+
+<script>
+      // Wait for the page to fully load
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    // Find the button
+    var backButton = document.getElementById('back-to-top');
+    
+    // Check if button exists (to avoid errors)
+    if (backButton) {
+      
+      // Listen for scrolling
+      window.addEventListener('scroll', function() {
+        // If scrolled down more than 300 pixels
+        if (window.scrollY > 300) {
+          backButton.style.display = 'block';  // Show button
+        } else {
+          backButton.style.display = 'none';   // Hide button
+        }
+      });
+      
+      // When button is clicked, scroll to top smoothly
+      backButton.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+    
+  });
+</script>
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    
+    if (menuToggle) {
+      menuToggle.addEventListener('click', function() {
+        navLinks.classList.toggle('show');
+      });
+    }
+    
+    // Current page highlighting
+    const currentPath = window.location.pathname;
+    const navLinksAll = document.querySelectorAll('.nav-link');
+    
+    navLinksAll.forEach(link => {
+      const linkPath = link.getAttribute('href');
+      
+      // Home page special case
+      if (linkPath === '/' && currentPath === '/') {
+        link.classList.add('active');
+      }
+      // Other pages - check if link path is in current URL
+      else if (linkPath !== '/' && currentPath.includes(linkPath)) {
+        link.classList.add('active');
+      }
+      // For /blog when viewing individual posts
+      else if (linkPath === '/blog' && currentPath.includes('/blog/')) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
+</html>

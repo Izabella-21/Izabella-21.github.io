@@ -1,0 +1,50 @@
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+
+# Bundler
+Gemfile.lock
+.bundle/
+vendor/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Dependencies
+node_modules/
+
+# AI & Skill Files
+.instructions.md
+.prompt.md
+.agent.md
+SKILL.md
+AGENTS.md
+copilot-instructions.md
+.copilot/
+.ai/
+
+# AI Model Files
+*.pkl
+*.h5
+*.pth
+*.pt
+*.joblib
+*.model
+
+# AI Training Data
+*.csv
+!assets/data/*.csv
+.training/
+.models/
+__pycache__/
+*.pyc
+CLEANUP_IMPROVEMENTS.md
